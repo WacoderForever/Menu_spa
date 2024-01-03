@@ -16,6 +16,10 @@ function start(){
                 for(let id in ITENS){
                     let current = ITENS[id];
                     let current_option = main_interface.option(current.name);
+                    if(current === char_item.chosed){
+                        current_option.set_prop('selected',true);
+                    }
+                    
                     current_option.set_prop('value',id);
                 }
             });
