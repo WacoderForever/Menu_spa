@@ -25,6 +25,8 @@ function start(){
                     }
                 });
 
+
+
                 select.set_prop('APosition','$(80%,5%,15%,25%)')
                 select.set_prop('render_change',(selected)=>{
                     char_item.chosed = ITENS[selected.value];
@@ -34,6 +36,24 @@ function start(){
                     let my_image = main_interface.create('img');
                     my_image.set_prop('APosition','$(5%,10%,30vh,30vh)');
                     my_image.set_prop('src',char_item.chosed.picture);
+
+                    let quantity_div  = main_interface.div(()=>{
+                        main_interface.p('Quantity',{inline_style:{'color':'white'}});
+
+
+                        let quantity = main_interface.input();
+                        quantity.set_prop('type','number');
+                        quantity.set_prop('value',char_item.quantity);
+                        quantity.set_prop('render_change',()=>{
+                            char_item.quantity+=1;
+                            char_item.total_price = char_item.chosed.unity_value * char_item.quantity;
+                        })
+
+
+                        main_interface.p(`price : ${char_item.total_price}`)
+                    })
+
+                    quantity_div.set_prop("APosition","$(35%,15%,70%,70%)");
 
 
                 }
@@ -61,6 +81,7 @@ function start(){
         my_button.set_prop('render_click',()=>{
             const DEFAULT_CHART_ITEM = {
                 quantity:0,
+                total_price:0,
                 chosed:undefined
             }
             chart.unshift(DEFAULT_CHART_ITEM);
