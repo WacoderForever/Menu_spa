@@ -10,7 +10,8 @@ function start(){
         let item_div = main_interface.div(()=>{
 
 
-            main_interface.select(()=>{
+
+            let select = main_interface.select(()=>{
 
                 for(let id in ITENS){
                     let current = ITENS[id];
@@ -18,15 +19,26 @@ function start(){
                     current_option.set_prop('value',id);
                 }
             });
-            main_interface.br();
+
+            select.set_prop('APosition','$(70%,5%,15%,25%)')
+            select.set_prop('render_change',(selected)=>{
+                char_item.chosed = ITENS[selected.value];
+            })
+
+            if(char_item.chosed){
+                let my_image = main_interface.create('img');
+                my_image.set_prop('APosition','$(5%,5%,50%,90%)');
+                my_image.set_prop('src',char_item.chosed.picture);
+
+
+            }
 
         });
-        
+
         item_div.inline_style({
             'background-color':'rgb(192,192,192)',
-            'text-align':'center'
         });
-        item_div.set_prop('APosition','$(5vw,+22vh,20vw,20vh)');
+        item_div.set_prop('APosition','$(5vw,+32vh,30vw,30vh)');
     }
 
 
@@ -34,7 +46,8 @@ function start(){
     let my_button = main_interface.button("Add");
     my_button.set_prop('render_click',()=>{
           const DEFAULT_CHART_ITEM = {
-              quantity:0
+              quantity:0,
+              chosed:undefined
           }
           chart.unshift(DEFAULT_CHART_ITEM);
     });
