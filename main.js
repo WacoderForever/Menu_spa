@@ -10,29 +10,35 @@ function start(){
 
             let item_div = main_interface.div(()=>{
 
-
-
                 let select = main_interface.select(()=>{
 
                     let current_option = main_interface.option("chose one");
-
                     for(let id in ITENS){
                         let current = ITENS[id];
                         let current_option = main_interface.option(current.name);
                         if(current === char_item.chosed){
                             current_option.set_prop('selected',true);
                         }
-
                         current_option.set_prop('value',id);
                     }
                 });
 
 
-
                 select.set_prop('APosition','$(80%,5%,15%,25%)')
                 select.set_prop('render_change',(selected)=>{
+
                     char_item.chosed = ITENS[selected.value];
+
                 })
+
+
+                let destroy = main_interface.button('Destroy');
+                destroy.set_prop('render_click',()=>{
+                    chart = chart.filter(v => v!== char_item);
+                })
+
+            
+
 
                 if(char_item.chosed){
                     let my_image = main_interface.create('img');
