@@ -36,7 +36,7 @@ function start(){
                 destroy.set_prop('render_click',()=>{
                     chart = chart.filter(v => v!== char_item);
                 })
-
+                destroy.set_prop('APosition','$(80%,30%,15%,25%)')
             
 
 
@@ -60,7 +60,7 @@ function start(){
                         main_interface.p(`price : ${char_item.total_price}`)
                     })
 
-                    quantity_div.set_prop("APosition","$(35%,15%,70%,70%)");
+                    quantity_div.set_prop("APosition","$(35%,15%,40%,70%)");
 
 
                 }
