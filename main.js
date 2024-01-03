@@ -84,7 +84,7 @@ function start(){
                 total_price:0,
                 chosed:undefined
             }
-            chart.unshift(DEFAULT_CHART_ITEM);
+            chart.push(DEFAULT_CHART_ITEM);
         });
         my_button.set_prop('APosition','$(+55vw,+10vh,5vw,5vh)');
 
