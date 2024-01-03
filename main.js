@@ -87,6 +87,19 @@ function start(){
             chart.unshift(DEFAULT_CHART_ITEM);
         });
         my_button.set_prop('APosition','$(+55vw,+10vh,5vw,5vh)');
+
+
+        let result = 0;
+
+        for(let item of chart){
+            result+=item.total_price;
+        }
+
+        let result_h4 = main_interface.h1(`total bil is ${result}`);
+        result_h4.set_prop('APosition','$(70vw,20vh,20vw,5vh)');
+
+
+
     })
 
 
