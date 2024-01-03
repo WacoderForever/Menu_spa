@@ -19,7 +19,7 @@ function start(){
                     if(current === char_item.chosed){
                         current_option.set_prop('selected',true);
                     }
-                    
+
                     current_option.set_prop('value',id);
                 }
             });
@@ -55,7 +55,7 @@ function start(){
           }
           chart.unshift(DEFAULT_CHART_ITEM);
     });
-    my_button.set_prop('APosition','$(+20vw,+22vh,5vw,5vh)');
+    my_button.set_prop('APosition','$(+20vw,+32vh,5vw,5vh)');
 }
 function main(){
     main_interface = createElement404(start,document.body);
