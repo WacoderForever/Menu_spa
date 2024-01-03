@@ -14,6 +14,8 @@ function start(){
 
                 let select = main_interface.select(()=>{
 
+                    let current_option = main_interface.option("chose one");
+
                     for(let id in ITENS){
                         let current = ITENS[id];
                         let current_option = main_interface.option(current.name);
@@ -39,7 +41,6 @@ function start(){
 
                     let quantity_div  = main_interface.div(()=>{
                         main_interface.p('Quantity',{inline_style:{'color':'white'}});
-
 
                         let quantity = main_interface.input();
                         quantity.set_prop('type','number');
