@@ -5,22 +5,24 @@ let main_interface;
 
 
 function ShowItemOnInterface(item){
-    console.log(item)
+    main_interface.div(()=>{
+       let myimage =main_interface.create("img")
+       myimage.set_prop("src",item["image"])
+      // myimage.set_prop("APosition","$(100px,+100px,100px,100px)")
+    })
 }
 
-
 function start(){
-   ITENS.forEach(["q",1,2,3,4,5,5],ShowItemOnInterface)
-
+   ITENS.forEach(ShowItemOnInterface)
 
 
 }
 
 
 function main(){
- //   main_interface = createElement404(start,document.body);
-  //  main_interface.render();
-  start()
+   main_interface = createElement404(start,document.body);
+      main_interface.render();
+  // start()
 
 }
 window.addEventListener('load',main);
