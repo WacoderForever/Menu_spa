@@ -8,7 +8,7 @@ function ShowItemOnInterface(item){
    let div = main_interface.div(()=>{
        let myimage =main_interface.create("img")
        myimage.set_prop("src",item["image"])
-       myimage.set_prop('APosition','$(5%,5%,90%,90%)');
+       myimage.set_prop('APosition','$(5%,5%,40%,40%)');
        myimage.inline_style({
          'fit-content':'contain'
        })
