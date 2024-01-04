@@ -1,19 +1,25 @@
 
-const ITENS = {
+const ITENS = [
+    {
+        "name":"pasta",
+        "image":"images/pasta.jpg",
+        "price":5.5
+    },
 
-    'burger':{
-        name:"Burger",
-        picture:'images/burguer.jpg',
-        unity_value:10
+    {
+        "name":"feijoada",
+        "image":"images/feijoada.jpg",
+        "price":5 
     },
-    'feijoada':{
-        name:"Feijoada",
-        picture:'images/feijoada.jpg',
-        unity_value:20
+    {
+        "name":"sandwich",
+        "image":"images/sandwich.jpg",
+        "price":4
     },
-    'pizza':{
-        name:"Pizza",
-        picture:'images/pizza.jpg',
-        unity_value:30
+    {
+        "name":"pancakes",
+        "image":"images/pancakes.jpg",
+        "price":6.5
     }
-}
+
+]
