@@ -22,7 +22,13 @@ function ShowItemOnInterface(item){
    })
 }
 
+
+
+
+
+
 function start(){
+   
    let root = main_interface.div(()=>{
       ITENS.forEach(ShowItemOnInterface)
    })
@@ -30,13 +36,22 @@ function start(){
    root.set_prop('APosition','$(0%,0%,100%,100%)')
 
 
+
 }
 
 
+
+
 function main(){
+
+   ITENS.forEach((value)=>{
+      value.quantity=0
+   })
    main_interface = createElement404(start,document.body);
       main_interface.render();
   // start()
 
 }
+
+
 window.addEventListener('load',main);
