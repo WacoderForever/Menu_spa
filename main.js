@@ -22,6 +22,14 @@ function calculate_and_show_bill(){
 
 
 }
+
+function changeInputValue(input,item){
+   if(input.value <0){
+      input.value=0
+   }
+   item.quantity = input.value
+   calculate_and_show_bill()
+}
 function ShowItemOnInterface(item,index){
    let div = main_interface.div(()=>{
        let myimage =main_interface.create("img")
@@ -45,9 +53,8 @@ function ShowItemOnInterface(item,index){
                'font-size':'1em',
             })  
 
-            input.set_prop('change',(value)=>{
-               item.quantity = value.value
-               calculate_and_show_bill()
+            input.set_prop('change',(input)=>{
+               changeInputValue(input,item)
             })
          
          input.set_prop('value',0)
@@ -84,42 +91,41 @@ function ShowItemOnInterface(item,index){
 
 
 
+function createRootContent(){
+   let sub = main_interface.div(()=>{
+         
+      let nav = main_interface.nav(()=>{
 
+         bil_div = main_interface.div();
+         calculate_and_show_bill()
+
+       
+
+         bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
+
+
+      })
+      nav.inline_style({
+         'background-color':'#333',
+      })
+
+      nav.set_prop('APosition','$(0%,0%,100%,10%)')
+
+
+      let my_content = main_interface.div(()=>{
+         for(let i = 0; i < ITENS.length; i++){
+            ShowItemOnInterface(ITENS[i],i)
+         }         
+      })
+      my_content.set_prop('APosition','$(0%,15%,100%,85%)')
+
+   })
+   sub.set_prop('APosition','$(0%,0%,100vw,100vh)')
+}
 
 function start(){
    
-   let root = main_interface.div(()=>{
-
-      let sub = main_interface.div(()=>{
-         
-         let nav = main_interface.nav(()=>{
-
-            bil_div = main_interface.div();
-            calculate_and_show_bill()
-
-          
-
-            bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
-
-
-         })
-         nav.inline_style({
-            'background-color':'#333',
-         })
-
-         nav.set_prop('APosition','$(0%,0%,100%,10%)')
-
-
-         let my_content = main_interface.div(()=>{
-            for(let i = 0; i < ITENS.length; i++){
-               ShowItemOnInterface(ITENS[i],i)
-            }         
-         })
-         my_content.set_prop('APosition','$(0%,15%,100%,85%)')
-
-      })
-      sub.set_prop('APosition','$(0%,0%,100vw,100vh)')
-   })
+   let root = main_interface.div(createRootContent)
 
 
    
