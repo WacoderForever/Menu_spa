@@ -2,6 +2,7 @@
 
 /**@type {Element404}*/
 let main_interface;
+let bil_paragraph;
 
 
 function ShowItemOnInterface(item,index){
@@ -12,9 +13,11 @@ function ShowItemOnInterface(item,index){
        myimage.inline_style({
          'fit-content':'contain'
        })
+
       
 
    })
+
    let break_line = index % 3 == 0   
    div.inline_style({
       'fit-content':'contain',
@@ -34,7 +37,9 @@ function ShowItemOnInterface(item,index){
 
 
 
-
+function set_bill_value(value){
+   
+}
 
 
 function start(){
@@ -42,9 +47,36 @@ function start(){
    let root = main_interface.div(()=>{
 
       let sub = main_interface.div(()=>{
-         for(let i = 0; i < ITENS.length; i++){
-            ShowItemOnInterface(ITENS[i],i)
-         }
+         
+         let nav = main_interface.nav(()=>{
+
+            let bil_div = main_interface.div(()=>{
+               bil_paragraph = main_interface.p('0.00')            
+            })
+
+            bil_div.inline_style({
+               'color':'orange',
+               'font-size':'2em'
+            })    
+
+            bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
+
+
+         })
+         nav.inline_style({
+            'background-color':'#333',
+         })
+
+         nav.set_prop('APosition','$(0%,0%,100%,10%)')
+
+
+         let my_content = main_interface.div(()=>{
+            for(let i = 0; i < ITENS.length; i++){
+               ShowItemOnInterface(ITENS[i],i)
+            }         
+         })
+         my_content.set_prop('APosition','$(0%,15%,100%,85%)')
+
       })
       sub.set_prop('APosition','$(0%,0%,100vw,100vh)')
    })
