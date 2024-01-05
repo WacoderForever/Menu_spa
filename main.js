@@ -73,7 +73,7 @@ function ShowItemOnInterface(item,index){
        myimage.inline_style({
          'fit-content':'contain'
        })
-      let content=main_interface.div(ItemContent(item))
+      let content=main_interface.div( ()=> ItemContent(item))
   
 
    })
