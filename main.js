@@ -17,8 +17,10 @@ function ShowItemOnInterface(item,index){
    })
    let break_line = index % 3 == 0   
    div.inline_style({
-      "background-color":"red"
+      'fit-content':'contain',
+      'border': '1px solid orange' 
    })
+
    let same_line = !break_line
    if(same_line){
       div.set_prop('APosition','$(f33%,+0%,31%,31%)')
