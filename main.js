@@ -2,20 +2,64 @@
 
 /**@type {Element404}*/
 let main_interface;
-let bil_paragraph;
+let bil_div;
+
+function calculate_and_show_bill(){
+   bil_div.clear();
+   let result  = 0;
+   
+   ITENS.forEach((value)=>{
+      result += value.price * value.quantity;
+   })
 
 
+   let bil_paragraph = bil_div.p(result)        
+   
+   bil_paragraph.inline_style({
+      'color':'orange',
+      'font-size':'2em'
+   })     
+
+
+}
 function ShowItemOnInterface(item,index){
    let div = main_interface.div(()=>{
        let myimage =main_interface.create("img")
        myimage.set_prop("src",item["image"])
-       myimage.set_prop('APosition','$(5%,5%,40%,40%)');
+       myimage.set_prop('APosition','$(3vh,3vh,20vh,20vh)');
        myimage.inline_style({
          'fit-content':'contain'
        })
+       let content_div = main_interface.div(()=>{
+            let name = main_interface.p(item["name"]);
 
+         
+            let input = main_interface.input();
+            input.inline_style({
+               'width':'80%',
+               'height':'20%',
+               'background-color':'#333',
+               'color':'orange',
+               'font-size':'1em',
+            })  
 
-      
+            input.set_prop('change',(value)=>{
+               item.quantity = value.value
+               calculate_and_show_bill()
+            })
+         
+         input.set_prop('value',0)
+         input.set_prop('type','number')
+
+      })
+       content_div.inline_style({
+         'color':'orange',
+         'font-size':'2em',
+         'text-align':'center'
+      })
+
+       content_div.set_prop('APosition','$(40%,3vh,60%,20vh)');
+  
 
    })
 
@@ -48,14 +92,10 @@ function start(){
          
          let nav = main_interface.nav(()=>{
 
-            let bil_div = main_interface.div(()=>{
-               bil_paragraph = main_interface.p('0.00')            
-            })
+            bil_div = main_interface.div();
+            calculate_and_show_bill()
 
-            bil_div.inline_style({
-               'color':'orange',
-               'font-size':'2em'
-            })    
+          
 
             bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
 
