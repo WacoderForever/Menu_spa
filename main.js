@@ -4,20 +4,18 @@
 let main_interface;
 let bil_div;
 
-function BillSpace(item){
-   
-}
 function ShowBill(){
+   let space=''
    let state='Thank you for dining with us here is your bill\n'
-   state+='Food     Quantity   Total\n'
-   state+='________________________\n'
+   state+='Food         Quantity         Total\n'
+   state+='_________________________________\n'
    let total=0
    for(let i=0;i<ITENS.length;i++){
       let item=ITENS[i]
       let item_total=item.price *item.quantity
       total+=item_total
       if(item.quantity>0){
-      state+=item["name"] +"       "+String(item.quantity)+"         $"+String(item_total)+'\n'
+      state+=item["name"] +'\t\t'+String(item.quantity)+"\t\t$"+String(item_total)+'\n'
       }
    }
    state+="_________________________\n"
