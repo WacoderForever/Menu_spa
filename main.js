@@ -63,17 +63,19 @@ function ItemContent(item){
  content_div.set_prop('APosition','$(40%,3vh,60%,20vh)');
 }
 
-
-
-function ShowItemOnInterface(item,index){
-   let div = main_interface.div(()=>{
-       let myimage =main_interface.create("img")
+function SetImage(item){
+   let myimage =main_interface.create("img")
        myimage.set_prop("src",item["image"])
        myimage.set_prop('APosition','$(3vh,3vh,20vh,20vh)');
        myimage.inline_style({
          'fit-content':'contain'
        })
-      let content=main_interface.div( ()=> ItemContent(item))
+}
+
+function ShowItemOnInterface(item,index){
+   let div = main_interface.div(()=>{
+      main_interface.div(()=> SetImage(item))
+      main_interface.div( ()=> ItemContent(item))
   
 
    })
@@ -96,22 +98,20 @@ function ShowItemOnInterface(item,index){
 
 }
 
+function Nav(){
+   bil_div = main_interface.div();
 
+   calculate_and_show_bill()
+
+   bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
+
+
+}
 
 function createRootContent(){
    let sub = main_interface.div(()=>{
          
-      let nav = main_interface.nav(()=>{
-
-         bil_div = main_interface.div();
-         calculate_and_show_bill()
-
-       
-
-         bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
-
-
-      })
+      let nav = main_interface.nav(()=>Nav())
       nav.inline_style({
          'background-color':'#333',
       })
