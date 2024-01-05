@@ -31,8 +31,10 @@ function ShowItemOnInterface(item,index){
          'fit-content':'contain'
        })
        let content_div = main_interface.div(()=>{
-            let name = main_interface.p(item["name"]);
 
+            let title = item["name"] + "  $" + item["price"]
+            let name = main_interface.p(title);
+      
          
             let input = main_interface.input();
             input.inline_style({
