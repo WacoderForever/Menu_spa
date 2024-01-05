@@ -14,6 +14,7 @@ function ShowItemOnInterface(item,index){
          'fit-content':'contain'
        })
 
+
       
 
    })
@@ -37,9 +38,6 @@ function ShowItemOnInterface(item,index){
 
 
 
-function set_bill_value(value){
-   
-}
 
 
 function start(){
