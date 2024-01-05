@@ -4,6 +4,24 @@
 let main_interface;
 let bil_div;
 
+function ShowBill(){
+   let state='Thank you for dining with us here is your bill\n'
+   state+='Food     Quantity   Total\n'
+   state+='________________________\n'
+   let total=0
+   for(let i=0;i<ITENS.length;i++){
+      let item=ITENS[i]
+      let item_total=item.price *item.quantity
+      total+=item_total
+      if(item.quantity>0){
+      state+=item["name"] +"       "+String(item.quantity)+"         $"+String(item_total)+'\n'
+      }
+   }
+   state+="_________________________\n"
+   state+="Total Bill------------>"+"$"+String(total)
+   return state
+}
+
 function calculate_and_show_bill(){
    bil_div.clear();
    let result  = 0;
@@ -35,7 +53,8 @@ function PopUp(){
    let pop=main_interface.div(()=>{
       let button=main_interface.button("Confirm")
       button.set_prop("click",()=>{
-         alert("wowo")
+         let stat1=ShowBill()
+         alert(stat1)
       })
       button.set_prop('APosition','$(50%,150%,90px,50px)')
       button.inline_style({
