@@ -4,6 +4,9 @@
 let main_interface;
 let bil_div;
 
+function BillSpace(item){
+   
+}
 function ShowBill(){
    let state='Thank you for dining with us here is your bill\n'
    state+='Food     Quantity   Total\n'
