@@ -4,7 +4,7 @@
 let main_interface;
 
 
-function ShowItemOnInterface(item){
+function ShowItemOnInterface(item,index){
    let div = main_interface.div(()=>{
        let myimage =main_interface.create("img")
        myimage.set_prop("src",item["image"])
@@ -12,14 +12,22 @@ function ShowItemOnInterface(item){
        myimage.inline_style({
          'fit-content':'contain'
        })
-
+      
 
    })
-
-   div.set_prop('APosition','$(10%,f34%,20%,30%)')
+   let break_line = index % 3 == 0   
    div.inline_style({
       "background-color":"red"
    })
+   let same_line = !break_line
+   if(same_line){
+      div.set_prop('APosition','$(f33%,+0%,31%,31%)')
+   }
+
+   if(break_line){
+      div.set_prop('APosition','$(0%,f33%,31%,31%)')
+   }
+
 }
 
 
@@ -30,12 +38,25 @@ function ShowItemOnInterface(item){
 function start(){
    
    let root = main_interface.div(()=>{
-      ITENS.forEach(ShowItemOnInterface)
+
+      let sub = main_interface.div(()=>{
+         for(let i = 0; i < ITENS.length; i++){
+            ShowItemOnInterface(ITENS[i],i)
+         }
+      })
+      sub.set_prop('APosition','$(0%,0%,100vw,100vh)')
    })
 
-   root.set_prop('APosition','$(0%,0%,100%,100%)')
+
+   
+   root.inline_style({
+      'background-color':'black'
+   })
+
+   root.set_prop('APosition','$(0%,0%,100vw,1000vh)')
 
 
+   
 
 }
 
