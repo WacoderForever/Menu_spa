@@ -30,6 +30,20 @@ function changeInputValue(input,item){
    item.quantity = input.value
    calculate_and_show_bill()
 }
+
+function PopUp(){
+   let pop=main_interface.div(()=>{
+      let button=main_interface.button("Confirm")
+      button.set_prop("click",()=>{
+         alert("wowo")
+      })
+      button.set_prop('APosition','$(50%,150%,90px,50px)')
+      button.inline_style({
+         'color':'orange',
+         'fonf-size':'2em'
+      })
+   })
+}
 function ItemContent(item){
    let content_div = main_interface.div(()=>{
 
@@ -43,7 +57,7 @@ function ItemContent(item){
          'height':'20%',
          'background-color':'#333',
          'color':'orange',
-         'font-size':'1em',
+         'font-size':'1em'
       })  
 
       input.set_prop('change',(input)=>{
@@ -77,7 +91,6 @@ function ShowItemOnInterface(item,index){
       main_interface.div(()=> SetImage(item))
       main_interface.div( ()=> ItemContent(item))
   
-
    })
  
    div.inline_style({
@@ -95,7 +108,7 @@ function ShowItemOnInterface(item,index){
    if(break_line){
       div.set_prop('APosition','$(0%,f33%,31%,31%)')
    }
-
+ 
 }
 
 function Nav(){
@@ -122,9 +135,12 @@ function createRootContent(){
       let my_content = main_interface.div(()=>{
          for(let i = 0; i < ITENS.length; i++){
             ShowItemOnInterface(ITENS[i],i)
-         }         
+         } 
+         PopUp()       
       })
       my_content.set_prop('APosition','$(0%,15%,100%,85%)')
+      
+     
 
    })
    sub.set_prop('APosition','$(0%,0%,100vw,100vh)')
