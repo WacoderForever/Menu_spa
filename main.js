@@ -123,12 +123,20 @@ function open_pop_pup(){
 
 function create_pop_up_button(){
    let open_trigger = main_interface.button("Confirm")
-   open_trigger.inline_style({
+   open_trigger.outline_style({
        'color':'white',
        'background-color':'orange',
        'font-size':'2em',
+       'border':'0',
+       'padding':'0',
+       hover:{
+         state:'hover',
+         'background-color':'white',
+         color:'orange'
+       }
+        
    })
-   open_trigger.set_prop('APosition','$(5%,30%,10%,90%)')
+   open_trigger.set_prop('APosition','$(5%,5%,10%,90%)')
    open_trigger.set_prop('click',()=>{
       open_pop_pup()
    })
@@ -204,9 +212,9 @@ function ShowItemOnInterface(item,index){
 }
 
 function Nav(){
-   bil_div = main_interface.div();
    
    create_pop_up_button();
+   bil_div = main_interface.div();
    calculate_and_show_bill()
 
    bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
