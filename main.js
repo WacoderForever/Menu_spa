@@ -3,6 +3,7 @@
 /**@type {Element404}*/
 let main_interface;
 let bil_div;
+let pop_div;
 
 function ShowBill(){
    let space=''
@@ -50,18 +51,46 @@ function changeInputValue(input,item){
    calculate_and_show_bill()
 }
 
+
+function PopDiv(){
+   let stat1=ShowBill()
+   pop_div=main_interface.div(()=>{
+      let button=main_interface.button("Check")
+      button.set_prop("click",()=>{
+         main_interface.p(stat1)
+         
+      })
+      button.set_prop('APosition','$(50%,250%,90px,50px)')
+      button.inline_style({
+         'color':'orange',
+         'font-size':'2em'
+      })
+
+   })
+   let esc=main_interface.button("Exit")
+   esc.set_prop("click",()=>pop_div.clear()) 
+   let stat2=pop_div.p(stat1)
+   stat2.inline_style({
+      "color":"orange",
+      "font-size":"2em"
+   })
+
+
+}
+
+
 function PopUp(){
    let pop=main_interface.div(()=>{
       let button=main_interface.button("Confirm")
-      button.set_prop("click",()=>{
-         let stat1=ShowBill()
-         alert(stat1)
-      })
+      button.set_prop("click",()=> PopDiv())
       button.set_prop('APosition','$(50%,150%,90px,50px)')
       button.inline_style({
          'color':'orange',
-         'fonf-size':'2em'
+         'font-size':'1em'
       })
+   })
+   pop.inline_style({
+      'background-color':'#333'
    })
 }
 function ItemContent(item){
