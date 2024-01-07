@@ -58,8 +58,10 @@ function ShowBill(){
 
 function calculate_and_show_bill(){
    bil_div.clear();
+
    let result  = 0;
    
+
    ITENS.forEach((value)=>{
       result += value.price * value.quantity;
 
@@ -67,7 +69,6 @@ function calculate_and_show_bill(){
 
 
    let bil_paragraph = bil_div.p(result)        
-   
    bil_paragraph.inline_style({
       'color':'orange',
       'font-size':'2em'
