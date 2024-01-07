@@ -5,6 +5,15 @@ let main_interface;
 let bil_div;
 let pop_div;
 
+
+function callc_result(){
+   let result  = 0;
+   
+   ITENS.forEach((value)=>{
+      result += value.price * value.quantity;
+   })
+   return result
+}
 function ShowBill(){
 
 
@@ -14,10 +23,6 @@ function ShowBill(){
          pop_div.th("Quantity")
          pop_div.th("Price")
    
-      })
-      header.inline_style({
-         'color':'orange',
-         'font-size':'2em'
       })
 
       ITENS.forEach((value)=>{
@@ -35,17 +40,18 @@ function ShowBill(){
 
 
    })
+   //define th lines 
+   table.inline_style({
+      'border-collapse':'collapse',
+      'width':'100%',
+      'border':'1px solid orange'
+   })
 
    table.set_prop('APosition','$(0%,10%,100%,00%)')
 
-   let result  = 0;
-   
-   ITENS.forEach((value)=>{
-      result += value.price * value.quantity;
-   })
-   
-   let total = pop_div.h4(`Total: $${result}`);
-   total.set_prop('APosition','$(0%,90%,100%,10%)')
+
+   let total = pop_div.h4(`Total: $${callc_result()}`);
+   total.set_prop('APosition','$(0%,70%,100%,10%)')
 
 }
 
@@ -80,7 +86,10 @@ function changeInputValue(input,item){
 
 
 function open_pop_pup(){
-   console.log("open_pop_pup")
+
+   if(!callc_result()){
+      return
+   }
    pop_div.clear();
    let out_click_div = pop_div.div();
 
@@ -90,7 +99,7 @@ function open_pop_pup(){
    })
    out_click_div.inline_style({
       'background-color':'black',
-      'opacity':'0.5',
+      'opacity':'0.9',
       'z-index':'1'
    })
    let pop_div_content = pop_div.div(()=>{
@@ -100,9 +109,10 @@ function open_pop_pup(){
    pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
 
    pop_div_content.inline_style({
-      'background-color':'white',
+      'background-color':'rgb(247, 207, 126)',
       'z-index':'2',
       'text-align':'center',
+
    })
 
 
@@ -117,9 +127,8 @@ function create_pop_up_button(){
        'color':'white',
        'background-color':'orange',
        'font-size':'2em',
-       'border-radius':'10px'
    })
-   open_trigger.set_prop('APosition','$(5%,30%,10%,50%)')
+   open_trigger.set_prop('APosition','$(5%,30%,10%,90%)')
    open_trigger.set_prop('click',()=>{
       open_pop_pup()
    })
