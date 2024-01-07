@@ -6,22 +6,47 @@ let bil_div;
 let pop_div;
 
 function ShowBill(){
-   let space=''
-   let state='Thank you for dining with us here is your bill\n'
-   state+='Food         Quantity         Total\n'
-   state+='_________________________________\n'
-   let total=0
-   for(let i=0;i<ITENS.length;i++){
-      let item=ITENS[i]
-      let item_total=item.price *item.quantity
-      total+=item_total
-      if(item.quantity>0){
-      state+=item["name"] +'\t\t'+String(item.quantity)+"\t\t$"+String(item_total)+'\n'
-      }
-   }
-   state+="_________________________\n"
-   state+="Total Bill------------>"+"$"+String(total)
-   return state
+
+
+   let table = pop_div.table(()=>{
+      let header = pop_div.tr(()=>{
+         pop_div.th("Item")
+         pop_div.th("Quantity")
+         pop_div.th("Price")
+   
+      })
+      header.inline_style({
+         'color':'orange',
+         'font-size':'2em'
+      })
+
+      ITENS.forEach((value)=>{
+         if(value.quantity>0){
+            let row = pop_div.tr(()=>{
+               pop_div.td(value["name"])
+               pop_div.td(value.quantity)
+               pop_div.td(value.price * value.quantity)
+            })
+         }
+      })
+
+
+
+
+
+   })
+
+   table.set_prop('APosition','$(0%,10%,100%,00%)')
+
+   let result  = 0;
+   
+   ITENS.forEach((value)=>{
+      result += value.price * value.quantity;
+   })
+   
+   let total = pop_div.h4(`Total: $${result}`);
+   total.set_prop('APosition','$(0%,90%,100%,10%)')
+
 }
 
 
@@ -31,6 +56,7 @@ function calculate_and_show_bill(){
    
    ITENS.forEach((value)=>{
       result += value.price * value.quantity;
+
    })
 
 
@@ -68,12 +94,15 @@ function open_pop_pup(){
       'z-index':'1'
    })
    let pop_div_content = pop_div.div(()=>{
-         
+         ShowBill()
    });
-   pop_div_content.set_prop('APosition','$(25%,20vh,50%,50vh)')
+   
+   pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
 
    pop_div_content.inline_style({
       'background-color':'white',
+      'z-index':'2',
+      'text-align':'center',
    })
 
 
