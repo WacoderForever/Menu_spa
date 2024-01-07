@@ -68,7 +68,7 @@ function PopDiv(){
 
    })
    let esc=main_interface.button("Exit")
-   esc.set_prop("click",()=>pop_div.clear()) 
+   esc.set_prop("click",()=>pop_div.clear) 
    let stat2=pop_div.p(stat1)
    stat2.inline_style({
       "color":"orange",
