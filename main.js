@@ -24,6 +24,7 @@ function ShowBill(){
    return state
 }
 
+
 function calculate_and_show_bill(){
    bil_div.clear();
    let result  = 0;
@@ -52,47 +53,51 @@ function changeInputValue(input,item){
 }
 
 
-function PopDiv(){
-   let stat1=ShowBill()
-   pop_div=main_interface.div(()=>{
-      let button=main_interface.button("Check")
-      button.set_prop("click",()=>{
-         main_interface.p(stat1)
+function open_pop_pup(){
+   console.log("open_pop_pup")
+   pop_div.clear();
+   let out_click_div = pop_div.div();
+
+   out_click_div.set_prop('APosition','$(0%,0%,100%,100%)')
+   out_click_div.set_prop('click',()=>{
+      pop_div.clear();
+   })
+   out_click_div.inline_style({
+      'background-color':'black',
+      'opacity':'0.5',
+      'z-index':'1'
+   })
+   let pop_div_content = pop_div.div(()=>{
          
-      })
-      button.set_prop('APosition','$(50%,250%,90px,50px)')
-      button.inline_style({
-         'color':'orange',
-         'font-size':'2em'
-      })
+   });
+   pop_div_content.set_prop('APosition','$(25%,20vh,50%,50vh)')
 
+   pop_div_content.inline_style({
+      'background-color':'white',
    })
-   let esc=main_interface.button("Exit")
-   esc.set_prop("click",()=>pop_div.clear) 
-   let stat2=pop_div.p(stat1)
-   stat2.inline_style({
-      "color":"orange",
-      "font-size":"2em"
-   })
+
+
+
 
 
 }
 
-
-function PopUp(){
-   let pop=main_interface.div(()=>{
-      let button=main_interface.button("Confirm")
-      button.set_prop("click",()=> PopDiv())
-      button.set_prop('APosition','$(50%,150%,90px,50px)')
-      button.inline_style({
-         'color':'orange',
-         'font-size':'1em'
-      })
+function create_pop_up_button(){
+   let open_trigger = main_interface.button("Confirm")
+   open_trigger.inline_style({
+       'color':'white',
+       'background-color':'orange',
+       'font-size':'2em',
+       'border-radius':'10px'
    })
-   pop.inline_style({
-      'background-color':'#333'
+   open_trigger.set_prop('APosition','$(5%,30%,10%,50%)')
+   open_trigger.set_prop('click',()=>{
+      open_pop_pup()
    })
+   
 }
+
+
 function ItemContent(item){
    let content_div = main_interface.div(()=>{
 
@@ -162,7 +167,8 @@ function ShowItemOnInterface(item,index){
 
 function Nav(){
    bil_div = main_interface.div();
-
+   
+   create_pop_up_button();
    calculate_and_show_bill()
 
    bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
@@ -171,28 +177,32 @@ function Nav(){
 }
 
 function createRootContent(){
+
    let sub = main_interface.div(()=>{
-         
       let nav = main_interface.nav(()=>Nav())
       nav.inline_style({
          'background-color':'#333',
       })
 
       nav.set_prop('APosition','$(0%,0%,100%,10%)')
-
+  
 
       let my_content = main_interface.div(()=>{
          for(let i = 0; i < ITENS.length; i++){
             ShowItemOnInterface(ITENS[i],i)
          } 
-         PopUp()       
+  
       })
       my_content.set_prop('APosition','$(0%,15%,100%,85%)')
-      
-     
+  
+         
 
    })
+
    sub.set_prop('APosition','$(0%,0%,100vw,100vh)')
+   
+   pop_div = main_interface.div();         
+
 }
 
 function start(){
