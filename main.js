@@ -269,7 +269,7 @@ function start(){
       'background-color':'black'
    })
 
-   root.set_prop('APosition','$(0%,0%,100vw,1000vh)')
+   root.set_prop('APosition','$(0%,0%,1000%,1000%)')
 
 
    
