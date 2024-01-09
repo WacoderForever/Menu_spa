@@ -196,7 +196,15 @@ function ShowItemOnInterface(item,index){
  
    div.inline_style({
       'fit-content':'contain',
-      'border': '1px solid orange' 
+      'border': '1px solid orange'
+   })
+   div.outline_style({
+      hover:{
+         state:'hover',
+         'background-color':'white',
+         'color':'black'
+
+      }
    })
 
    let break_line = index % 3 == 0  
