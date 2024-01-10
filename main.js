@@ -71,7 +71,7 @@ function calculate_and_show_bill(){
    let bil_paragraph = bil_div.p(result)        
    bil_paragraph.inline_style({
       'color':'orange',
-      'font-size':'200%'
+      'font-size':'2em'
    })     
 
 
@@ -107,7 +107,7 @@ function open_pop_pup(){
          ShowBill()
    });
    
-   pop_div_content.set_prop('APosition','$(25%,2%,50%,8%)')
+   pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
 
    pop_div_content.inline_style({
       'background-color':'rgb(247, 207, 126)',
@@ -127,7 +127,7 @@ function create_pop_up_button(){
    open_trigger.outline_style({
        'color':'white',
        'background-color':'orange',
-       'font-size':'200%',
+       'font-size':'2em',
        'border':'0',
        'padding':'0',
        hover:{
