@@ -127,7 +127,7 @@ function create_pop_up_button(){
    open_trigger.outline_style({
        'color':'white',
        'background-color':'orange',
-       'font-size':'2em',
+       'font-size':'200%',
        'border':'0',
        'padding':'0',
        hover:{
