@@ -71,7 +71,7 @@ function calculate_and_show_bill(){
    let bil_paragraph = bil_div.p(result)        
    bil_paragraph.inline_style({
       'color':'orange',
-      'font-size':'2em'
+      'font-size':'200%'
    })     
 
 
@@ -107,7 +107,7 @@ function open_pop_pup(){
          ShowBill()
    });
    
-   pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
+   pop_div_content.set_prop('APosition','$(25%,2%,50%,8%)')
 
    pop_div_content.inline_style({
       'background-color':'rgb(247, 207, 126)',
@@ -127,7 +127,7 @@ function create_pop_up_button(){
    open_trigger.outline_style({
        'color':'white',
        'background-color':'orange',
-       'font-size':'2em',
+       'font-size':'200%',
        'border':'0',
        'padding':'0',
        hover:{
@@ -196,15 +196,7 @@ function ShowItemOnInterface(item,index){
  
    div.inline_style({
       'fit-content':'contain',
-      'border': '1px solid orange'
-   })
-   div.outline_style({
-      hover:{
-         state:'hover',
-         'background-color':'white',
-         'color':'black'
-
-      }
+      'border': '1px solid orange' 
    })
 
    let break_line = index % 3 == 0  
@@ -269,7 +261,7 @@ function start(){
       'background-color':'black'
    })
 
-   root.set_prop('APosition','$(0%,0%,1000%,1000%)')
+   root.set_prop('APosition','$(0%,0%,100vw,1000vh)')
 
 
    
