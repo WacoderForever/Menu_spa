@@ -166,6 +166,8 @@ function changeInputValue(input,item){
    calculate_and_show_bill()
 }
 
+
+
 function ItemDetails(item){
    let title = item["name"] + "  $" + item["price"]
    let name = main_interface.p(title);
