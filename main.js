@@ -154,6 +154,7 @@ function calculate_and_show_bill(){
       'font-size':'2em'
    })     
 
+
 }
 
 
@@ -165,39 +166,39 @@ function changeInputValue(input,item){
    calculate_and_show_bill()
 }
 
+function ItemDetails(item){
+   let title = item["name"] + "  $" + item["price"]
+   let name = main_interface.p(title);
+
+
+   let input = main_interface.input();
+   input.inline_style({
+      'width':'80%',
+      'height':'20%',
+      'background-color':'#333',
+      'color':'orange',
+      'font-size':'1em'
+   })  
+
+   input.set_prop('change',(input)=>{
+      changeInputValue(input,item)
+   })
+
+   input.set_prop('value',0)
+   input.set_prop('type','number')
+}
+
 
 
 function ItemContent(item){
-   let content_div = main_interface.div(()=>{
-
-      let title = item["name"] + "  $" + item["price"]
-      let name = main_interface.p(title);
-
-   
-      let input = main_interface.input();
-      input.inline_style({
-         'width':'80%',
-         'height':'20%',
-         'background-color':'#333',
-         'color':'orange',
-         'font-size':'1em'
-      })  
-
-      input.set_prop('change',(input)=>{
-         changeInputValue(input,item)
-      })
-   
-   input.set_prop('value',0)
-   input.set_prop('type','number')
-
-})
- content_div.inline_style({
+   let content_div = main_interface.div(()=>ItemDetails(item))
+   content_div.inline_style({
    'color':'orange',
    'font-size':'2em',
    'text-align':'center'
-})
+   })
 
- content_div.set_prop('APosition','$(40%,3vh,60%,20vh)');
+   content_div.set_prop('APosition','$(40%,3vh,60%,20vh)');
 
 }
 
@@ -280,9 +281,6 @@ function start(){
    })
 
    root.set_prop('APosition','$(0%,0%,100vw,1000vh)')
-
-
-   
 
 }
 
