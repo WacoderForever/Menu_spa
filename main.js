@@ -6,14 +6,7 @@ let bil_div;
 let pop_div;
 
 
-function callc_result(){
-   let result  = 0;
-   
-   ITENS.forEach((value)=>{
-      result += value.price * value.quantity;
-   })
-   return result
-}
+
 function ShowBill(){
 
 
@@ -55,17 +48,20 @@ function ShowBill(){
 
 }
 
+function callc_result(){
+   let result  = 0;
+   
+   ITENS.forEach((value)=>{
+      result += value.price * value.quantity;
+   })
+   return result
+}
+
 
 function calculate_and_show_bill(){
    bil_div.clear();
 
-   let result  = 0;
-   
-
-   ITENS.forEach((value)=>{
-      result += value.price * value.quantity;
-
-   })
+   let result  = callc_result();
 
 
    let bil_paragraph = bil_div.p(result)        
@@ -76,6 +72,7 @@ function calculate_and_show_bill(){
 
 
 }
+
 
 function changeInputValue(input,item){
    if(input.value <0){
