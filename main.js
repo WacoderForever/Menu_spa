@@ -7,9 +7,65 @@ let pop_div;
 
 
 
-function ShowBill(){
+function create_pop_up_button(){
+   let open_trigger = main_interface.button("Confirm")
+   open_trigger.outline_style({
+       'color':'white',
+       'background-color':'orange',
+       'font-size':'2em',
+       'border':'0',
+       'padding':'0',
+       hover:{
+         state:'hover',
+         'background-color':'white',
+         color:'orange'
+       }
+        
+   })
+   open_trigger.set_prop('APosition','$(5%,5%,10%,90%)')
+   open_trigger.set_prop('click',()=>{
+      open_pop_pup()
+   })
+   
+}
 
 
+
+function open_pop_pup(){
+
+   if(!callc_result()){
+      return
+   }
+   pop_div.clear();
+   let out_click_div = pop_div.div();
+
+   out_click_div.set_prop('APosition','$(0%,0%,100%,100%)')
+   out_click_div.set_prop('click',()=>{
+      pop_div.clear();
+   })
+   out_click_div.inline_style({
+      'background-color':'black',
+      'opacity':'0.9',
+      'z-index':'1'
+   })
+   let pop_div_content = pop_div.div(()=>{
+         ShowBill()
+   });
+   
+   pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
+
+   pop_div_content.inline_style({
+      'background-color':'rgb(247, 207, 126)',
+      'z-index':'2',
+      'text-align':'center',
+
+   })
+
+}
+
+
+
+function pop_table(){
    let table = pop_div.table(()=>{
       let header = pop_div.tr(()=>{
          pop_div.th("Item")
@@ -28,11 +84,17 @@ function ShowBill(){
          }
       })
 
-
-
-
-
    })
+
+   return table
+}
+
+
+
+function ShowBill(){
+
+   let table=pop_table()
+   
    //define th lines 
    table.inline_style({
       'border-collapse':'collapse',
@@ -47,6 +109,8 @@ function ShowBill(){
    total.set_prop('APosition','$(0%,70%,100%,10%)')
 
 }
+
+
 
 function callc_result(){
    let result  = 0;
@@ -82,64 +146,6 @@ function changeInputValue(input,item){
    calculate_and_show_bill()
 }
 
-
-function open_pop_pup(){
-
-   if(!callc_result()){
-      return
-   }
-   pop_div.clear();
-   let out_click_div = pop_div.div();
-
-   out_click_div.set_prop('APosition','$(0%,0%,100%,100%)')
-   out_click_div.set_prop('click',()=>{
-      pop_div.clear();
-   })
-   out_click_div.inline_style({
-      'background-color':'black',
-      'opacity':'0.9',
-      'z-index':'1'
-   })
-   let pop_div_content = pop_div.div(()=>{
-         ShowBill()
-   });
-   
-   pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
-
-   pop_div_content.inline_style({
-      'background-color':'rgb(247, 207, 126)',
-      'z-index':'2',
-      'text-align':'center',
-
-   })
-
-
-
-
-
-}
-
-function create_pop_up_button(){
-   let open_trigger = main_interface.button("Confirm")
-   open_trigger.outline_style({
-       'color':'white',
-       'background-color':'orange',
-       'font-size':'2em',
-       'border':'0',
-       'padding':'0',
-       hover:{
-         state:'hover',
-         'background-color':'white',
-         color:'orange'
-       }
-        
-   })
-   open_trigger.set_prop('APosition','$(5%,5%,10%,90%)')
-   open_trigger.set_prop('click',()=>{
-      open_pop_pup()
-   })
-   
-}
 
 
 function ItemContent(item){
