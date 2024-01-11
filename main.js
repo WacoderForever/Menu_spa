@@ -5,6 +5,16 @@ let main_interface;
 let bil_div;
 let pop_div;
 
+function Nav(){
+   
+   create_pop_up_button();
+   bil_div = main_interface.div();
+   calculate_and_show_bill()
+
+   bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
+
+
+}
 
 
 function create_pop_up_button(){
@@ -37,17 +47,9 @@ function open_pop_pup(){
       return
    }
    pop_div.clear();
-   let out_click_div = pop_div.div();
 
-   out_click_div.set_prop('APosition','$(0%,0%,100%,100%)')
-   out_click_div.set_prop('click',()=>{
-      pop_div.clear();
-   })
-   out_click_div.inline_style({
-      'background-color':'black',
-      'opacity':'0.9',
-      'z-index':'1'
-   })
+   ClosePopup()
+
    let pop_div_content = pop_div.div(()=>{
          ShowBill()
    });
@@ -59,6 +61,24 @@ function open_pop_pup(){
       'z-index':'2',
       'text-align':'center',
 
+   })
+
+}
+
+
+
+function ClosePopup(){
+   let out_click_div = pop_div.div();
+
+   out_click_div.set_prop('APosition','$(0%,0%,100%,100%)')
+   out_click_div.set_prop('click',()=>{
+      pop_div.clear();
+   })
+
+   out_click_div.inline_style({
+      'background-color':'black',
+      'opacity':'0.9',
+      'z-index':'1'
    })
 
 }
@@ -134,7 +154,6 @@ function calculate_and_show_bill(){
       'font-size':'2em'
    })     
 
-
 }
 
 
@@ -179,7 +198,10 @@ function ItemContent(item){
 })
 
  content_div.set_prop('APosition','$(40%,3vh,60%,20vh)');
+
 }
+
+
 
 function SetImage(item){
    let myimage =main_interface.create("img")
@@ -189,6 +211,8 @@ function SetImage(item){
          'fit-content':'contain'
        })
 }
+
+
 
 function ShowItemOnInterface(item,index){
    let div = main_interface.div(()=>{
@@ -215,16 +239,7 @@ function ShowItemOnInterface(item,index){
  
 }
 
-function Nav(){
-   
-   create_pop_up_button();
-   bil_div = main_interface.div();
-   calculate_and_show_bill()
 
-   bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
-
-
-}
 
 function createRootContent(){
 
