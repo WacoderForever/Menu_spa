@@ -1,8 +1,8 @@
 function Nav(){
    
-    create_pop_up_button();
+    CreatePopUpButton();
     bil_div = main_interface.div();
-    calculate_and_show_bill()
+    CalculateAndShowBill()
  
     bil_div.set_prop('APosition','$(90%,0%,100%,10%)')
  

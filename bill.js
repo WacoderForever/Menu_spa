@@ -1,4 +1,4 @@
-function callc_result(){
+function CalculateResult(){
     let result  = 0;
     
     ITENS.forEach((value)=>{
@@ -8,10 +8,10 @@ function callc_result(){
  }
  
  
- function calculate_and_show_bill(){
+ function CalculateAndShowBill(){
     bil_div.clear();
  
-    let result  = callc_result();
+    let result  = CalculateResult();
  
  
     let bil_paragraph = bil_div.p(result)        
@@ -24,9 +24,9 @@ function callc_result(){
  }
 
  
-function ShowBill(){
+function ShowPopUpBill(){
  
-    let table=pop_table()
+    let table=PopUpTable()
     
     //define th lines 
     table.inline_style({
@@ -38,7 +38,7 @@ function ShowBill(){
     table.set_prop('APosition','$(0%,10%,100%,00%)')
  
  
-    let total = pop_div.h4(`Total: $${callc_result()}`);
+    let total = pop_div.h4(`Total: $${CalculateResult()}`);
     total.set_prop('APosition','$(0%,70%,100%,10%)')
  
  }

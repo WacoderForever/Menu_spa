@@ -1,6 +1,6 @@
 function start(){
    
-    let root = main_interface.div(createRootContent)
+    let root = main_interface.div(CreateRootContent)
  
     
     root.inline_style({
