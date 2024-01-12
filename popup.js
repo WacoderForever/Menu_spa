@@ -1,4 +1,4 @@
-function create_pop_up_button(){
+function CreatePopUpButton(){
     let open_trigger = main_interface.button("Confirm")
     open_trigger.outline_style({
         'color':'white',
@@ -15,24 +15,24 @@ function create_pop_up_button(){
     })
     open_trigger.set_prop('APosition','$(5%,5%,10%,90%)')
     open_trigger.set_prop('click',()=>{
-       open_pop_pup()
+       OpenPopUp()
     })
     
  }
  
  
  
- function open_pop_pup(){
+ function OpenPopUp(){
  
     if(!CalculateResult()){
        return
     }
     pop_div.clear();
  
-    ClosePopup()
+    ClosePopUp()
  
     let pop_div_content = pop_div.div(()=>{
-          ShowBill()
+          ShowPopUpBill()
     });
     
     pop_div_content.set_prop('APosition','$(25%,20vh,50%,60vh)')
@@ -48,7 +48,7 @@ function create_pop_up_button(){
  
  
  
- function ClosePopup(){
+ function ClosePopUp(){
     let out_click_div = pop_div.div();
  
     out_click_div.set_prop('APosition','$(0%,0%,100%,100%)')
@@ -66,10 +66,10 @@ function create_pop_up_button(){
  
  
  
- function pop_table(){
+ function PopUpTable(){
     let table = pop_div.table(()=>{
        
-      let header=Header()
+      let header=PopUpHeader()
       ItemsGot()
     })
  
@@ -77,7 +77,7 @@ function create_pop_up_button(){
  }
 
 
- function Header(){
+ function PopUpHeader(){
    let header = pop_div.tr(()=>{
       pop_div.th("Item")
       pop_div.th("Quantity")

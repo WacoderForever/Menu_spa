@@ -1,4 +1,4 @@
-function changeInputValue(input,item){
+function ChangeInputValue(input,item){
     if(input.value <0){
        input.value=0
     }
@@ -23,7 +23,7 @@ function changeInputValue(input,item){
     })  
  
     input.set_prop('change',(input)=>{
-       changeInputValue(input,item)
+       ChangeInputValue(input,item)
     })
  
     input.set_prop('value',0)
