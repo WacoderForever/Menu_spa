@@ -24,7 +24,7 @@ function create_pop_up_button(){
  
  function open_pop_pup(){
  
-    if(!callc_result()){
+    if(!CalculateResult()){
        return
     }
     pop_div.clear();

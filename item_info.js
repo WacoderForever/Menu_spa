@@ -3,7 +3,7 @@ function changeInputValue(input,item){
        input.value=0
     }
     item.quantity = input.value
-    calculate_and_show_bill()
+    CalculateAndShowBill()
  }
  
  
